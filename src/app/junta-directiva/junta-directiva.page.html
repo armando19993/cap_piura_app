@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="margin: 0 auto;" color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="margin: 0 auto;">Junta Directiva</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list class="ion-text-center list_buttons_news">
+    <ion-button class="bton_set_">Todas</ion-button>
+    <ion-button *ngFor="let categoria of categorias" class="bton_set_" routerLink="/noticias-by-category/{{categoria.id}}">{{categoria.categoria}}</ion-button>
+  </ion-list>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col  size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12"
+                *ngFor="let usuario of usuarios; let i = index">
+            <app-tarjeta-usuario [usuario]="usuario" [indice]="i" ></app-tarjeta-usuario>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
