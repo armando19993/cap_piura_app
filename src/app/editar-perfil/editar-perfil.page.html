@@ -1,0 +1,38 @@
+
+
+<ion-header [translucent]="true">
+  <ion-toolbar style="margin: 0 auto;" color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="margin: 0 auto;">Editar Perfil</ion-title>
+    
+    <!-- <ion-buttons slot="end" (click)="cerrarSesion()">
+      <ion-icon name="log-out-outline"  style="font-size: 2em;"></ion-icon>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+  <div id="container">
+      <p style="text-align: center; margin-top: 1em;" class="titulo-editar">DATOS DEL USUARIO</p>
+      <p style="margin-left: 5%; margin-bottom: 0px;">Nombre: {{nombre}}</p>
+      <p style="margin-left: 5%; margin-top: 0px;"> DNI o CAP: {{documento}}</p>
+      <ion-label position="stacked" style="margin-left: 5%;">Fecha de Nacimiento</ion-label>
+      <ion-datetime placeholder="Fecha de Nacimiento" displayFormat="DD-MM-YYYY" [(ngModel)]="fecha_nacimiento"></ion-datetime> <br>
+      <ion-label position="stacked" style="margin-left: 5%;">Correo</ion-label>
+      <ion-input placeholder="Correo" [(ngModel)]="correo" ></ion-input> <br>
+      <ion-label position="stacked" style="margin-left: 5%;">Celular</ion-label>
+      <ion-input placeholder="Celular" value="{{celular}}" [(ngModel)]="celular" ></ion-input> <br>
+      <ion-label position="stacked" style="margin-left: 5%;">Ruc</ion-label>
+      <ion-input placeholder="Ruc" value="{{ruc}}" [(ngModel)]="ruc" ></ion-input> <br>
+      <ion-label position="stacked" style="margin-left: 5%;">Direccion</ion-label>
+      <ion-input placeholder="Ruc" value="{{direccion}}" [(ngModel)]="direccion" ></ion-input> <br>
+
+      <ion-button color="primary" (click)="actualizarDatos()"> GUARDAR </ion-button> <br>
+  <ion-button color="dark" fill="outline" routerLink="/editar-clave"> Editar Contraseña </ion-button>
+  <ion-button color="dark" fill="outline" routerLink="/inicio"> Regresar </ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,24 @@
+<ion-header>
+  <!-- <ion-toolbar>
+    <ion-title center>Inicie Sesion Como Colegiado</ion-title>
+  </ion-toolbar> -->
+</ion-header>
+
+<ion-content>
+<div class="header-login">
+  <img src="assets/images/logo.png" class="image-login"  alt=""> <br>
+  INICIE SESION COMO EXTERNO
+</div>
+<div class="form-login" style="margin-top: 30px; margin-bottom: 30px;">
+
+  <ion-input placeholder="DNI" [(ngModel)]="dni"></ion-input> <br>
+  <ion-input placeholder="Clave" [type]="passwordTypeInput" [(ngModel)]="clave"></ion-input> <br>
+
+  
+
+</div>
+<ion-button color="primary" (click)="IniciarSesion()"> Iniciar Sesion </ion-button>
+<ion-button color="primary" fill="outline" routerLink="/registro-externo"> Registrese </ion-button>
+<ion-button color="primary" fill="outline" routerLink="/credenciales-externo"> Recuperar Credenciales </ion-button>
+  <ion-button color="dark" fill="outline" routerLink="/folder">REGRESAR</ion-button>
+</ion-content>

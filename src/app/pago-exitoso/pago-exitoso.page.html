@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="margin: 0 auto;" color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="margin: 0 auto;"> PAGO EXITOSO </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+      <img src="/assets/images/check.png" class="image-login"  alt=""> <br>
+      <p class="text-exito"> PAGO EXITOSO </p>
+
+      <div class="div">
+       <b>Razon Social: </b> {{pago.razon_social}} <br>
+       <b>Documento: </b> {{pago.documento}}<br>
+       <b>Pago Concepto:</b> {{pago.pago_concepto}}<br>
+       <b>Id Mercado Pago:</b> {{pago.id_mercadopago}}<br>
+      </div>
+
+    <button class="boton" routerLink="/pagados">Historial de Pago</button>
+</ion-content>

@@ -1,0 +1,39 @@
+
+
+<ion-header [translucent]="true">
+  <ion-toolbar style="margin: 0 auto;" color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="margin: 0 auto;">Certificado de Habilidad - QR</ion-title>
+    <!-- <ion-buttons slot="end" (click)="cerrarSesion()">
+      <ion-icon name="log-out-outline"  style="font-size: 2em;"></ion-icon>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div id="container">
+    <ion-list>
+
+    <ion-card  style="width: 90%; margin-left: 5%;" >
+      <ion-card-header color="primary"> 
+        <ion-icon name="back" ></ion-icon> Qr - Certificado de Habilidad
+     </ion-card-header>
+
+      <ion-card-header>
+            <img src="{{qr}}" width="100%" alt="">
+      </ion-card-header>
+
+      <ion-card-header color="success" routerLink="/cetificados-habilidad"> 
+        <ion-icon name="back" ></ion-icon> Regresar
+     </ion-card-header>
+    </ion-card>
+
+
+</ion-list>
+  </div>
+
+
+</ion-content>

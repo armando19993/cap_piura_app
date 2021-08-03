@@ -1,0 +1,76 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="margin: 0 auto;" color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="margin: 0 auto;"> CAP PIURA </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+ <form action="/process_payment" method="post" id="paymentForm">
+      <img src="/assets/images/logo_.png" class="image-login"  alt=""> <br>
+          <div>
+            <input type="text" id="cardNumber" class="input" (change)="guessPaymentMethod(); getCardToken()" placeholder="Numero de Tarjeta" data-checkout="cardNumber"
+              onselectstart="return false" onpaste="return false"
+              oncopy="return false" oncut="return false"
+              ondrag="return false" ondrop="return false" autocomplete=off>
+          </div>
+
+          <div>
+           
+            <div>
+              <input type="text" placeholder="MM" class="input-fecha" id="cardExpirationMonth" data-checkout="cardExpirationMonth"
+                onselectstart="return false" onpaste="return false"
+                oncopy="return false" oncut="return false"
+                ondrag="return false" ondrop="return false" autocomplete=off>
+
+              <input type="text" placeholder="YY" class="input-fecha2" id="cardExpirationYear" data-checkout="cardExpirationYear"
+                onselectstart="return false" onpaste="return false"
+                oncopy="return false" oncut="return false"
+                ondrag="return false" ondrop="return false" autocomplete=off>
+
+                <input id="securityCode" data-checkout="securityCode" placeholder="CVV" class="input2" (blur)="getbancos(); getCardToken()" type="text"
+              onselectstart="return false" onpaste="return false"
+              oncopy="return false" oncut="return false"
+              ondrag="return false" ondrop="return false" autocomplete=off>
+            </div>
+
+            <div>
+            <input id="cardholderName" class="input" placeholder="Titular de la Tarjeta" (blur)="getCardToken()" data-checkout="cardholderName" type="text">
+            </div>
+
+            <div>
+            <select id="docType" name="docType" class="documento" data-checkout="docType" (onchange)="getCardToken()" type="text"></select>
+              <input id="docNumber" name="docNumber" class="numero_documento" (blur)="getCardToken()" placeholder="Numero de Documento" data-checkout="docNumber" type="text"/>
+            </div>
+
+
+          <div>
+            <input id="email" name="email" class="input" placeholder="Email" type="text" (blur)="getCardToken()" value=""/>
+          </div>
+
+
+          </div>
+
+        <div>
+          <div id="issuerInput">
+          <!-- Banco Emisor -->
+            <select id="issuer" name="issuer" data-checkout="issuer" hidden="true"></select>
+          </div>
+          <div>
+            <!-- Cuotas -->
+            <select type="text" id="installments" name="installments" hidden="true"></select>
+          </div>
+           
+          <div>
+            <input type="hidden" name="transactionAmount" id="transactionAmount" value="100" />
+            <input type="text" name="paymentMethodId" id="paymentMethodId" (blur)="getCardToken()" hidden="true"/>
+            <input type="hidden" name="description" id="description" />
+            <br>
+            <button (click)="pagar()" class="boton" type="submit">Pagar S/ {{monto}}</button>
+            <br>
+          </div>
+      </div>
+    </form>
+</ion-content>

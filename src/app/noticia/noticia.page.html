@@ -1,0 +1,31 @@
+
+
+<ion-header [translucent]="true">
+  <ion-toolbar style="margin: 0 auto;" color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="margin: 0 auto;"></ion-title>
+    <!-- <ion-buttons slot="end" (click)="cerrarSesion()">
+      <ion-icon name="log-out-outline"  style="font-size: 2em;"></ion-icon>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+  <div id="container" style="margin-top: 30px; text-align: center;">
+    <p class="titulo-noticia">{{titulo}}</p>
+
+    <ion-slides style="width: 90%; margin-left: 5%;" slidesPerView="1.5" spaceBetween="10">
+      <ion-slide *ngFor="let imagen of imagenes" class="unidad-slider" style="width: 90% !important;">
+        <img src="http://localhost:8000/uploads/noticias/{{imagen.imagen}}" />
+      </ion-slide>
+    </ion-slides>
+
+    <div [innerHTML]="contenido" class="contenido-noticia"></div>
+
+    <ion-button class="" routerLink="/noticias">Regresar</ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,43 @@
+
+
+<ion-header [translucent]="true">
+  <ion-toolbar style="margin: 0 auto;" color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="margin: 0 auto;">Publicaciones Mas Recientess</ion-title>
+    <!-- <ion-buttons slot="end" (click)="cerrarSesion()">
+      <ion-icon name="log-out-outline"  style="font-size: 2em;"></ion-icon>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+  <ion-list class="ion-text-center list_buttons_news">
+    <ion-button class="bton_set_">Todas</ion-button>
+    <ion-button *ngFor="let categoria of categorias" class="bton_set_" routerLink="/noticias-by-category/{{categoria.id}}">{{categoria.categoria}}</ion-button>
+  </ion-list>
+
+
+
+  <div id="container">
+    <ion-list>
+    <div *ngFor="let noticia of noticias">
+    <ion-card routerLink="/noticia/{{noticia.id}}" style="width: 90%; margin-left: 5%;" >
+      <img src="http://localhost:8000/uploads/noticias/{{noticia.imagenes[0].imagen}}" />
+      <ion-card-header>
+        <ion-card-subtitle>{{noticia.fecha}} - {{noticia.categoria.categoria}}</ion-card-subtitle>
+        <ion-card-title>{{noticia.titulo}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Ver Noticia
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-list>
+  </div>
+
+
+</ion-content>

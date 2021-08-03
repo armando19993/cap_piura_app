@@ -1,0 +1,82 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="margin: 0 auto;" color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="margin: 0 auto;"> PAGO EXITOSO </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+      <img src="/assets/images/check.png" class="image-login"  alt=""> <br>
+      <p class="text-exito"> PAGO EXITOSO </p>
+
+      <ion-grid>
+      <ion-row>
+        <ion-col class="titulo" size="12">
+          Codigo Mercado Pago
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="textos" size="12">
+          {{pago.id_mercadopago}}
+        </ion-col>
+      </ion-row>
+
+
+       <ion-row>
+        <ion-col class="titulo" size="12">
+          Tipo Documento / Documento
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="textos" size="12">
+          {{tipo_documento}} / {{pago.documento}}
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row>
+        <ion-col class="titulo" size="12">
+          Razon Social
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="textos" size="12">
+          {{pago.razon_social}}
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="titulo" size="12">
+          Concepto del Pago
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="textos" size="12">
+          {{pago.pago_concepto}}
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="titulo" size="12">
+          Documento Electronico Solicitado
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="textos" size="12">
+          {{documento_electronico}}
+        </ion-col>
+      </ion-row>
+
+      <button class="boton" routerLink="/pagados">Regresar</button>
+      </ion-grid>
+
+    
+</ion-content>

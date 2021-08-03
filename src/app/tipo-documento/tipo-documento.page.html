@@ -1,0 +1,99 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="margin: 0 auto;" color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="margin: 0 auto;">Estado de Cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div style="height: 20px;"></div>
+  
+  <ion-row class="titulo">
+    <ion-col size="12">
+      <b class="titulo" style="margin-left: -0%;">{{dni}} - {{nombre}}</b>
+    </ion-col>
+  </ion-row>
+
+
+  <ion-row class="titulo">
+    <ion-col size="8">
+      <b>MONTO A PAGAR</b>
+    </ion-col>
+    <ion-col>
+      <b> S/ {{monto}}.00 </b>
+    </ion-col>
+
+
+    <ion-col size="6">
+      <button ion-button (click)="boleta()" [class]="claseboleta" class="boton-documento">Boleta</button>
+    </ion-col>
+    <ion-col size="6" *ngIf="exonerable == '1';">
+      <button ion-button (click)="factura()" [class]="clasefactura">Factura</button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="titulo">
+    <ion-col sie="12">
+      <div *ngIf="bolt" style="margin-top: 30px;"> 
+        Numero de DNI: 
+        <ion-input placeholder="" value="{{dni}}" [(ngModel)]="dni"></ion-input>
+        Nombre del Usuario: 
+        <ion-input placeholder="" value="{{nombre}}" [(ngModel)]="nombre"></ion-input>
+        Direccion del Usuario: 
+        <ion-input placeholder="" value="{{direccion}}" [(ngModel)]="direccion"></ion-input>
+
+
+        <div style="margin-top: 20px;"><b>Si le falta un dato, tendra que actualizarlo en EDITAR PERFIL.</b></div>
+        <br>
+        <br>
+      </div>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="titulo">
+    
+    <ion-col sie="12">
+    <div *ngIf="fact" style="margin-top: 20px;"> 
+      <ion-col size="6">
+        <button ion-button (click)="desbloquear()" [class]="clasepara" class="boton-documento">Para Terceros o Empresa</button>
+      </ion-col>
+
+
+      
+        Numero de RUC: 
+        <ion-input placeholder="" [disabled]="datos_sunat" [(ngModel)]="ruc" (focusout)="verificarRUC()" value="{{ruc}}"></ion-input>
+        Nombre del Usuario: 
+        <ion-input placeholder="" [disabled]="datos_sunat" [(ngModel)]="razon_social" value="{{razon_social}}"></ion-input>
+        Direccion del Usuario: 
+        <ion-input placeholder="" [disabled]="datos_sunat" [(ngModel)]="direccion" value="{{direccion}}"></ion-input>
+
+
+        <div style="margin-top: 20px;"><b>Si le falta un dato, tendra que actualizarlo en EDITAR PERFIL.</b></div>
+        <br>
+        <br>
+      </div>
+    </ion-col>
+  </ion-row>
+
+
+  <ion-button color="primary" style="width: 90%; margin-left: 5%" (click)="GuardarContinuar()" routerLink="/pasarela/{{id}}/{{monto}}">Pagar</ion-button>
+  <ion-row>
+   
+  </ion-row>
+  
+  <label>
+    
+ </label>
+
+  
+
+
+
+  <div id="container">
+   
+  </div>
+
+
+</ion-content>

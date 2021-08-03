@@ -1,0 +1,45 @@
+<ion-header color="primary">
+  <ion-toolbar color="primary">
+    <ion-title>Registro de Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br>
+  <ion-input placeholder="Nombres*" [(ngModel)]="nombres"></ion-input> <br>
+  <ion-input placeholder="Apellido Paterno" [(ngModel)]="apellido_paterno"></ion-input> <br>
+  <ion-input placeholder="Apellido Materno" [(ngModel)]="apellido_materno"></ion-input> <br>
+  <ion-input placeholder="DNI" [(ngModel)]="dni"></ion-input> <br>
+  <ion-datetime placeholder="Fecha de Nacimiento" displayFormat="DD-MM-YYYY" [(ngModel)]="fecha_nacimiento"></ion-datetime> <br>
+  <ion-input placeholder="Email" [(ngModel)]="correo"></ion-input> <br>
+  <ion-input placeholder="Ruc" [(ngModel)]="ruc"></ion-input> <br>
+  <ion-input placeholder="Celular" [(ngModel)]="celular"></ion-input> <br>
+  <ion-input placeholder="Direccion" [(ngModel)]="direccion"></ion-input> <br>
+  <ion-input placeholder="Piura" disabled value="Piura"></ion-input> <br>
+  <ion-select placeholder="Seleccione Sexo" [(ngModel)]="sexo" interface="action-sheet">
+    <ion-select-option value="MASCULINO">MASCULINO</ion-select-option>
+    <ion-select-option value="FEMENINO">FEMENINO</ion-select-option>
+  </ion-select> <br>
+  <ion-select placeholder="Seleccione Grado" [(ngModel)]="grado" interface="action-sheet">
+    <ion-select-option value="SUPERIOR">SUPERIOR</ion-select-option>
+    <ion-select-option value="TÉCNICO">TÉCNICO</ion-select-option>
+    <ion-select-option value="ESTUDIANTE">ESTUDIANTE</ion-select-option>
+  </ion-select> <br>
+  <ion-select placeholder="Seleccione Profesion" [(ngModel)]="profesion" interface="action-sheet">
+    <ion-select-option value="Arquitecto">Arquitecto</ion-select-option>
+    <ion-select-option value="Contador">Contador</ion-select-option>
+    <ion-select-option value="Ingeniero">Ingeniero</ion-select-option>
+    <ion-select-option value="Abogado">Abogado</ion-select-option>
+    <ion-select-option value="Arqueologo">Arqueologo</ion-select-option>
+    <ion-select-option value="Administracion">Administracion</ion-select-option>
+    <ion-select-option value="Educacion">Educacion</ion-select-option>
+    <ion-select-option value="Tecnico">Tecnico</ion-select-option>
+    <ion-select-option value="Auxiliar">Auxiliar</ion-select-option>
+    <ion-select-option value="Estudiante">Estudiante</ion-select-option>
+  </ion-select> <br>
+
+  <ion-button color="primary" (click)="crearUsuario()"> REGISTRARSE </ion-button> <br>
+  <ion-button color="dark" routerLink="/login-externo"> Regresar </ion-button>
+  <br>
+
+</ion-content>

@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title style="font-size: 1em;">Recuperar Credenciales</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="container" style="margin-top: 20%;">
+    <ion-input placeholder="DNI" [(ngModel)]="dni"></ion-input> <br>
+    <ion-input placeholder="Correo" [(ngModel)]="correo"></ion-input> <br>
+    
+  </div>
+
+  <ion-button color="primary" (click)="verficarDatos()"> Enviar Credenciales </ion-button>
+  <ion-button color="dark" fill="outline" routerLink="/login-externo">REGRESAR</ion-button>
+</ion-content>

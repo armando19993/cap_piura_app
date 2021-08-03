@@ -1,0 +1,45 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <div class="header-menu"  style="text-align:center;" >
+        <img src="assets/images/logo.png" style="width: 30%;  margin-top: 20px;"  alt="">
+        <p class="titulo-menu">{{nombre}}</p>
+        <p class="documento-menu">{{documento}}</p>
+
+        <div *ngIf="tipo == 'colegiado_inactivo';"> 
+          <div class='batget-estado-danger'>Inactivo</div>
+        </div>
+
+        <div *ngIf="tipo == 'colegiado_activo';"> 
+          <div class='batget-estado-success'>Activo</div>
+        </div>
+
+        <ion-button size="small" fill="outline" color="light" href="/editar-perfil">EDITAR PERFIL</ion-button>
+        </div>
+      <ion-content>
+
+        <ion-list id="inbox-list" style="border: 0x solid;">
+
+
+
+          <ion-menu-toggle style="border: 0x solid;" auto-hide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle style="border: 0x solid;" auto-hide="false" *ngIf="tipo_user == 'colegiado';">
+            <ion-item routerDirection="root" routerLink="/cetificados-habilidad" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" ios="shield-checkmark-outline" [md]="shield-checkmark"></ion-icon>
+              <ion-label>Certificados de Habilidad</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+
+      </ion-content>
+      </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>
