@@ -98,7 +98,11 @@ const routes: Routes = [
   {
     path: 'qr-code/:id',
     loadChildren: () => import('./qr-code/qr-code.module').then( m => m.QrCodePageModule)
+  },  {
+    path: 'junta-directiva',
+    loadChildren: () => import('./junta-directiva/junta-directiva.module').then( m => m.JuntaDirectivaPageModule)
   }
+
 ];
 
 @NgModule({
