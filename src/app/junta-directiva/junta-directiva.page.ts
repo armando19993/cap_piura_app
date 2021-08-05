@@ -1,6 +1,7 @@
 import { LoadingController } from '@ionic/angular';
 import { ServiciosService } from './../servicios.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-junta-directiva',
@@ -10,19 +11,19 @@ import { Component, OnInit } from '@angular/core';
 export class JuntaDirectivaPage implements OnInit {
 
   categorias: any;
+  id: any;
 
-  usuarios = [
-    {id: 86824,  nombre: 'Diego Alonso López Ramirez', cargo:'Decano', correo:'decano@decano.com',
-     foto:'https://www.billiardport.com/assets/pages/media/profile/profile_user.jpg' },
-    {id: 72499,  nombre: 'Diana Navid Sabillón Zelaya', cargo:'Director', correo:'director@decano.com',
-    foto:'https://www.billiardport.com/assets/pages/media/profile/profile_user.jpg' }
-  ];
+  usuarios: any;
 
-  constructor(private servicio: ServiciosService,
-    private loading: LoadingController,) { }
+  constructor(
+    private servicio: ServiciosService,
+    private loading: LoadingController,
+    private activeroute: ActivatedRoute
+    ) { }
 
   ngOnInit() {
     this.listarcategorias();
+    this.listarJuntas();
   }
 
   async listarcategorias(){
@@ -31,12 +32,36 @@ export class JuntaDirectivaPage implements OnInit {
      }); loader.present();
 
 
-    return this.servicio.getDataAPI('categoriasNoticias')
+    return this.servicio.getDataAPI('categoriasJuntas')
     .subscribe((data: any)=>{
       this.categorias = data.categorias;
       console.log(this.categorias);
       loader.dismiss();
     });
   }
+
+
+  async listarJuntas(){
+    const loader = await this.loading.create({
+      cssClass: 'loader_cont',
+     }); loader.present();
+
+
+     this.activeroute.params.subscribe((data: any)=>{
+       this.id = data.id;
+
+       return this.servicio.getDataParamsAPI('juntaByCategory', 1)
+       // eslint-disable-next-line @typescript-eslint/no-shadow
+       .subscribe((data: any)=>{
+         this.usuarios = data.junta;
+         console.log(data);
+         loader.dismiss();
+       });
+     });
+
+
+  }
+
+
 
 }

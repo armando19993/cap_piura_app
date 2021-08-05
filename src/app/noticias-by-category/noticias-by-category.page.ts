@@ -10,7 +10,7 @@ import { ServiciosService } from '../servicios.service';
 })
 export class NoticiasByCategoryPage implements OnInit {
 
-  public noticias: any[] = [];
+  public usuarios: any[] = [];
   nombre: any;
   documento: any;
   categorias: any;
@@ -24,9 +24,8 @@ export class NoticiasByCategoryPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getDatos();
-    this.listarnoticias();
     this.listarcategorias();
+    this.listarJuntas();
   }
 
   async getDatos(){
@@ -39,7 +38,7 @@ export class NoticiasByCategoryPage implements OnInit {
 
  }
 
- async listarnoticias(){
+ async listarJuntas(){
    const loader = await this.loading.create({
      cssClass: 'loader_cont',
     }); loader.present();
@@ -48,10 +47,10 @@ export class NoticiasByCategoryPage implements OnInit {
     this.activeroute.params.subscribe((data: any)=>{
       this.id = data.id;
 
-      return this.servicio.getDataParamsAPI('noticiasByCategoria', this.id)
+      return this.servicio.getDataParamsAPI('juntaByCategory', this.id)
       // eslint-disable-next-line @typescript-eslint/no-shadow
       .subscribe((data: any)=>{
-        this.noticias = data.noticias;
+        this.usuarios = data.junta;
         console.log(data);
         loader.dismiss();
       });
@@ -62,7 +61,7 @@ export class NoticiasByCategoryPage implements OnInit {
 
 
  async listarcategorias(){
-  return this.servicio.getDataAPI('categoriasNoticias')
+  return this.servicio.getDataAPI('categoriasJuntas')
   .subscribe((data: any)=>{
     this.categorias = data.categorias;
     console.log(this.categorias);

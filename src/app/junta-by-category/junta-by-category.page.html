@@ -9,8 +9,8 @@
 
 <ion-content [fullscreen]="true">
   <ion-list class="ion-text-center list_buttons_news">
-        <!-- <ion-button class="bton_set_">Todas</ion-button> -->
-        <ion-button *ngFor="let categoria of categorias" class="bton_set_" routerLink="/junta-by-category/{{categoria.id}}">{{categoria.categoria}}</ion-button>
+    <!-- <ion-button class="bton_set_">Todas</ion-button> -->
+    <ion-button *ngFor="let categoria of categorias" class="bton_set_" routerLink="/junta-by-category/{{categoria.id}}">{{categoria.categoria}}</ion-button>
   </ion-list>
 
   <ion-grid fixed>
