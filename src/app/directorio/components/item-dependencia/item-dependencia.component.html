@@ -1,0 +1,20 @@
+<ion-item (click)="clickDependencia(itemDependencia.abierto)">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="11">
+        <strong>{{itemDependencia.nombre}}</strong>
+      </ion-col>
+      <ion-col size="1">
+        <ion-icon *ngIf="itemDependencia.abierto === false" name="chevron-down" size="small"></ion-icon>
+        <ion-icon *ngIf="itemDependencia.abierto" name="chevron-up" size="small"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <p>{{itemDependencia.codigo}}</p>
+    </ion-row>
+  </ion-grid>
+</ion-item>
+
+<ion-grid *ngIf="itemDependencia.abierto">
+    <app-tarjeta-usuario-dependencia *ngFor="let item of itemDependencia.usuarios" [usuario]="item"></app-tarjeta-usuario-dependencia>`
+</ion-grid>

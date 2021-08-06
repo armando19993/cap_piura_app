@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DirectorioPage implements OnInit {
 
-  constructor() { }
+  botonSeleccionado: number;
+
+  constructor() {
+    this.botonSeleccionado = 1;
+  }
 
   ngOnInit() {
+  }
+
+  onClickBoton(event){
+    this.botonSeleccionado = event;
   }
 
 }

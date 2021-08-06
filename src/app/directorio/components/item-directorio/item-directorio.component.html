@@ -1,0 +1,10 @@
+<ion-grid>
+  <ion-row>
+    <ion-icon [name]="itemDirectorio.icono" size="small"></ion-icon>
+    <strong class="titulo-item">{{itemDirectorio.titulo}}</strong>
+  </ion-row>
+  <ion-row>
+    <p *ngIf="itemDirectorio.esLink === false" class="item-contenido">{{itemDirectorio.contenido}}</p>
+    <a *ngIf="itemDirectorio.esLink" class="item-contenido">{{itemDirectorio.contenido}}</a>
+  </ion-row>
+</ion-grid>

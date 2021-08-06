@@ -12,7 +12,7 @@ export class AppComponent {
     { title: 'Inicio', url: '/inicio', icon: 'home' },
     { title: 'Noticias', url: '/noticias', icon: 'newspaper' },
     { title: 'Junta Directiva', url: '/junta-directiva', icon: 'people' },
-    { title: 'Directorio', url: '/noticias', icon: 'albums' },
+    { title: 'Directorio', url: '/directorio', icon: 'albums' },
     { title: 'Bolsa de Trabajo', url: '/bolsa-trabajo', icon: 'folder' },
     { title: 'Estado de Cuenta', url: '/estado-de-cuenta', icon: 'receipt'},
     { title: 'Pagos', url: '/', icon: 'cash'},

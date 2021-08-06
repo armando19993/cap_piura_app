@@ -1,0 +1,13 @@
+<ion-card class="ion-card-estilo">
+  <ion-card-content class="ion-card-limite">
+    <app-item-directorio *ngFor="let item of items" [itemDirectorio]="item"></app-item-directorio>
+    <br>
+    <br>
+    <strong class="social-network-label">Redes Sociales</strong>
+    <ion-grid class="social-network-label">
+      <ion-row>
+        <app-item-red-social *ngFor="let item of redes" [redSocial]="item"></app-item-red-social>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>

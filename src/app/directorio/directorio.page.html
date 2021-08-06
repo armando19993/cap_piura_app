@@ -1,9 +1,23 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Directorio</ion-title>
+<ion-header [translucent]="true">
+  <ion-toolbar style="margin: 0 auto;" color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="margin: 0 auto;">Directorio Institucional</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
 
+<ion-content >
+  <ion-list class="ion-text-center">
+    <ion-button (click)="onClickBoton(1)">Cip Piura
+      <ion-icon *ngIf="botonSeleccionado === 1" slot="start" name="checkmark-circle"></ion-icon>
+    </ion-button>
+    <ion-button (click)="onClickBoton(2)">Dependencias
+      <ion-icon *ngIf="botonSeleccionado === 2" slot="start" name="checkmark-circle"></ion-icon>
+    </ion-button>
+  </ion-list>
+
+  <app-tarjeta-informacion-basica *ngIf="botonSeleccionado === 1"></app-tarjeta-informacion-basica>
+  <app-tarjeta-dependencia *ngIf="botonSeleccionado === 2"></app-tarjeta-dependencia>
 </ion-content>
