@@ -106,7 +106,15 @@ const routes: Routes = [
   {
     path: 'junta-by-category/:id',
     loadChildren: () => import('./junta-by-category/junta-by-category.module').then( m => m.JuntaByCategoryPageModule)
+  },  {
+    path: 'curso',
+    loadChildren: () => import('./curso/curso.module').then( m => m.CursoPageModule)
+  },
+  {
+    path: 'pagos',
+    loadChildren: () => import('./pagos/pagos.module').then( m => m.PagosPageModule)
   }
+
 
 
 ];

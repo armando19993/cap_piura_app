@@ -1,0 +1,33 @@
+
+
+<ion-header [translucent]="true">
+  <ion-toolbar style="margin: 0 auto;" color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="margin: 0 auto;">Cursos</ion-title>
+    <!-- <ion-buttons slot="end" (click)="cerrarSesion()">
+      <ion-icon name="log-out-outline"  style="font-size: 2em;"></ion-icon>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+  <div id="container">
+    <ion-list>
+    <div >
+    <ion-card  style="width: 90%; margin-left: 5%;" *ngFor="let recibo of cursos">
+      <ion-card-header>
+            <ion-card-subtitle>{{recibo.fecha}} - {{recibo.pago_concepto}}</ion-card-subtitle>
+            <ion-card-title>S/ {{recibo.monto}}</ion-card-title>
+      </ion-card-header>
+     <ion-card-header class="boton-completo" (click)="ejecutar()" routerLink="/tipo-documento/{{recibo.id}}">Ver</ion-card-header>
+    </ion-card>
+  </div>
+</ion-list>
+  </div>
+
+
+</ion-content>
