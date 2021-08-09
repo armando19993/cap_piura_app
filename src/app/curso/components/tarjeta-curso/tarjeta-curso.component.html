@@ -1,0 +1,38 @@
+<ion-card >
+  <div class="ion-card-limite">
+    <strong>{{curso.titulo}}</strong>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+          <ion-item (click)="onClickVerImagen()">
+            <ion-img *ngIf="curso.foto"
+              [src]="curso.foto">
+            </ion-img>
+          </ion-item>
+
+        </ion-col>
+        <ion-col size="8">
+            <ion-grid>
+              <ion-row class="bottomRow">
+                <p>Inicia: {{curso.fecha_inicio}}</p>
+              </ion-row>
+              <ion-row class="bottomRow">
+                <p>Hora: {{curso.hora}}</p>
+              </ion-row>
+              <ion-row class="bottomRow">
+                <p style="color:#1cb308">{{curso.tipo === "1" ? 'Virtual' : 'Presencial'}}</p>
+              </ion-row>
+              <ion-row class="bottomRow">
+                <ion-button size="small" fill="clear" routerLink="/curso-reserva/{{curso.id}}">
+                  <ion-icon slot="icon-only" name="cash" size="small"></ion-icon>
+                </ion-button>
+                <ion-button size="small" fill="clear" (click)="onCLickWhatsapp()">
+                  <ion-icon slot="icon-only" name="logo-whatsapp" size="small"></ion-icon>
+                </ion-button>
+              </ion-row>
+            </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-card>

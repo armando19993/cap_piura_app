@@ -1,3 +1,6 @@
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+import { TarjetaCursoComponent } from './components/tarjeta-curso/tarjeta-curso.component';
+import { ContenedorCursosComponent } from './components/contenedor-cursos/contenedor-cursos.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +18,7 @@ import { CursoPage } from './curso.page';
     IonicModule,
     CursoPageRoutingModule
   ],
-  declarations: [CursoPage]
+  providers: [PhotoViewer],
+  declarations: [CursoPage,ContenedorCursosComponent, TarjetaCursoComponent]
 })
 export class CursoPageModule {}

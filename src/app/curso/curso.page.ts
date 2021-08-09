@@ -10,15 +10,16 @@ import { ServiciosService } from '../servicios.service';
 })
 export class CursoPage implements OnInit {
 
+  botonSeleccionado: number;
   cursos: any;
 
   constructor(
-    private router: Router,
     private loading: LoadingController,
     private servicio: ServiciosService
   ) { }
 
   ngOnInit() {
+    this.botonSeleccionado = 1;
     this.listarCursos();
   }
 
@@ -35,9 +36,13 @@ export class CursoPage implements OnInit {
     return this.servicio.getDataAPI('cursos')
     .subscribe((data: any)=>{
       this.cursos = data.cursos;
-      console.log(this.cursos);
+      localStorage.setItem('cursos',this.cursos);
       loader.dismiss();
     });
+  }
+
+  onClickBoton(event){
+    this.botonSeleccionado = event;
   }
 
 }
