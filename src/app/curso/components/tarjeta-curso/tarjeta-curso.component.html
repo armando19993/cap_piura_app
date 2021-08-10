@@ -26,7 +26,7 @@
                 <ion-button size="small" fill="clear" routerLink="/curso-reserva/{{curso.id}}">
                   <ion-icon slot="icon-only" name="cash" size="small"></ion-icon>
                 </ion-button>
-                <ion-button size="small" fill="clear" (click)="onCLickWhatsapp()">
+                <ion-button size="small" fill="clear" [href]="curso.whatsapp">
                   <ion-icon slot="icon-only" name="logo-whatsapp" size="small"></ion-icon>
                 </ion-button>
               </ion-row>
