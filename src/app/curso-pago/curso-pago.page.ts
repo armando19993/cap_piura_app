@@ -19,7 +19,9 @@ export class CursoPagoPage implements OnInit {
     private activeroute: ActivatedRoute,
     private alertService: AlertService,
     private loading: LoadingController,
-    private servicio: ServiciosService) { }
+    private servicio: ServiciosService) {
+      this. listarCursos();
+    }
 
   ngOnInit() {
   }

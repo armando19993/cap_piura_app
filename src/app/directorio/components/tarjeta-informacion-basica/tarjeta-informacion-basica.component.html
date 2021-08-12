@@ -1,12 +1,80 @@
 <ion-card class="ion-card-estilo">
   <ion-card-content class="ion-card-limite">
-    <app-item-directorio *ngFor="let item of items" [itemDirectorio]="item"></app-item-directorio>
-    <br>
-    <br>
-    <strong class="social-network-label">Redes Sociales</strong>
-    <ion-grid class="social-network-label">
+
+    <ion-grid>
       <ion-row>
-        <app-item-red-social *ngFor="let item of redes" [redSocial]="item"></app-item-red-social>
+        <ion-icon name="business" size="small"></ion-icon>
+        <strong class="titulo-item">Razón Social:</strong>
+      </ion-row>
+      <ion-row>
+        <p  class="item-contenido">{{directorio?.razon_social}}</p>
+
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-icon name="book" size="small"></ion-icon>
+        <strong class="titulo-item">RUC:</strong>
+      </ion-row>
+      <ion-row>
+        <p  class="item-contenido">{{directorio?.ruc}}</p>
+
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-icon name="call" size="small"></ion-icon>
+        <strong class="titulo-item">Central Telefónica:</strong>
+      </ion-row>
+      <ion-row>
+        <p class="item-contenido">{{directorio?.telefono}}</p>
+
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-icon name="time" size="small"></ion-icon>
+        <strong class="titulo-item">Horario:</strong>
+      </ion-row>
+      <ion-row>
+        <p  class="item-contenido">{{directorio?.horario}}</p>
+
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-icon name="pin" size="small"></ion-icon>
+        <strong class="titulo-item">Dirección:</strong>
+      </ion-row>
+      <ion-row>
+        <p  class="item-contenido">{{directorio?.direccion}}</p>
+
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-icon name="link" size="small"></ion-icon>
+        <strong class="titulo-item">Sitio Web:</strong>
+      </ion-row>
+      <ion-row>
+        <a  class="item-contenido">{{directorio?.web}}</a>
+
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-icon name="logo-facebook" size="small"></ion-icon> &nbsp; <a [href]="directorio?.facebook">Facebook</a>
+        </ion-col>
+        <ion-col>
+          <ion-icon name="logo-youtube" size="small"></ion-icon> &nbsp; <a [href]="directorio?.youtube">Youtube</a>
+        </ion-col>
+        <ion-col>
+          <ion-icon name="logo-instagram" size="small"></ion-icon> &nbsp; <a [href]="directorio?.instagram">Instagram</a>
+        </ion-col>
+
+        <!-- <app-item-red-social *ngFor="let item of redes" [redSocial]="item"></app-item-red-social> -->
       </ion-row>
     </ion-grid>
   </ion-card-content>
