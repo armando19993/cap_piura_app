@@ -118,7 +118,20 @@ const routes: Routes = [
   {
     path: 'curso-reserva/:cursoId',
     loadChildren: () => import('./curso-reserva/curso-reserva.module').then( m => m.CursoReservaPageModule)
+  },
+  {
+    path: 'curso-pago',
+    loadChildren: () => import('./curso-reserva/curso-reserva.module').then( m => m.CursoReservaPageModule)
+  },
+  {
+    path: 'curso-pago/:cursoId',
+    loadChildren: () => import('./curso-pago/curso-pago.module').then( m => m.CursoPagoPageModule)
+  },  {
+    path: 'curso-comprobante-factura',
+    loadChildren: () => import('./curso-comprobante-factura/curso-comprobante-factura.module').then( m => m.CursoComprobanteFacturaPageModule)
   }
+
+
 
 ];
 

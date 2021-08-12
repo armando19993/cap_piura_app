@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="margin: 0 auto;" color="primary">
+    <ion-buttons slot="start">
+    <ion-back-button defaultHref="curso" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title style="margin: 0 auto;">CD PIURA</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="contenedor">
+  <div class="titulo-estilo">
+    <h4 style="font-weight: bold;">{{curso?.titulo}}</h4>
+  </div>
+
+  <div class="contenedor-foto">
+    <ion-img *ngIf="curso?.foto"
+      [src]="curso.foto">
+    </ion-img>
+  </div>
+  <div >
+    <ion-item style="text-align: center;" lines="none" (click)="onClickVerImagen()">
+      <ion-label color="primary">Ver</ion-label>
+    </ion-item>
+  </div>
+
+  <ion-grid class="informacion-curso">
+    <ion-row class="bottomRow">
+      <p>Inicia: {{curso?.fecha_inicio}}</p>
+    </ion-row>
+    <ion-row class="bottomRow">
+      <p>Hora: {{curso?.hora}}</p>
+    </ion-row>
+    <ion-row class="bottomRow">
+      <p style="color:#1cb308">{{curso?.tipo === "1" ? 'Virtual' : 'Presencial'}}</p>
+    </ion-row>
+    <ion-row class="bottomRow">
+      <strong>Costo de Curso: {{curso?.costo}}</strong>
+    </ion-row>
+  </ion-grid>
+
+  <div [innerHTML]="curso?.descripcion" class="contenido-noticia"></div>
+
+  <div style="text-align: center;">
+    <ion-button expand="block" (click)="pagar()">Pagar</ion-button>
+  </div>
+
+
+</ion-content>
