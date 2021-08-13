@@ -3,7 +3,6 @@ import { LoadingController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { AlertService } from './../alert.service';
 import { Component, OnInit } from '@angular/core';
-import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 @Component({
   selector: 'app-curso-pago',
@@ -15,7 +14,7 @@ export class CursoPagoPage implements OnInit {
   curso: any;
   cursos: any[];
 
-  constructor( private photoViewer: PhotoViewer,
+  constructor(
     private activeroute: ActivatedRoute,
     private alertService: AlertService,
     private loading: LoadingController,
@@ -48,7 +47,7 @@ export class CursoPagoPage implements OnInit {
 
 
   onClickVerImagen() {
-    this.photoViewer.show(this.curso.foto);
+    //this.photoViewer.show(this.curso.foto);
   }
 
   pagar() {

@@ -1,4 +1,3 @@
-import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -10,7 +9,7 @@ export class TarjetaCursoComponent implements OnInit {
 
   @Input() curso: any;
 
-  constructor(private photoViewer: PhotoViewer) { }
+  constructor() { }
 
   ngOnInit() {
     this.curso.foto =
@@ -19,6 +18,6 @@ export class TarjetaCursoComponent implements OnInit {
 
   onCLickWhatsapp() {}
   onClickVerImagen() {
-    this.photoViewer.show('https://retos-operaciones-logistica.eae.es/wp-content/uploads/2018/04/iStock-627490508.jpg');
+    //this.photoViewer.show('https://retos-operaciones-logistica.eae.es/wp-content/uploads/2018/04/iStock-627490508.jpg');
   }
 }

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CursoComprobanteFacturaPage implements OnInit {
 
-
+  curso: any;
   usuario: any;
   constructor() { }
 

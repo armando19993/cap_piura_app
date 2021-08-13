@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -16,7 +15,6 @@ import { CursoReservaPage } from './curso-reserva.page';
     IonicModule,
     CursoReservaPageRoutingModule
   ],
-  providers: [PhotoViewer],
   declarations: [CursoReservaPage]
 })
 export class CursoReservaPageModule {}

@@ -6,11 +6,11 @@
         <p class="titulo-menu">{{nombre}}</p>
         <p class="documento-menu">{{documento}}</p>
 
-        <div *ngIf="tipo == 'colegiado_inactivo';"> 
+        <div *ngIf="tipo == 'colegiado_inactivo';">
           <div class='batget-estado-danger'>Inactivo</div>
         </div>
 
-        <div *ngIf="tipo == 'colegiado_activo';"> 
+        <div *ngIf="tipo == 'colegiado_activo';">
           <div class='batget-estado-success'>Activo</div>
         </div>
 
@@ -29,9 +29,9 @@
             </ion-item>
           </ion-menu-toggle>
 
-          <ion-menu-toggle style="border: 0x solid;" auto-hide="false" *ngIf="tipo_user == 'colegiado';">
+          <ion-menu-toggle style="border: 0x solid;" auto-hide="false" *ngIf="tipoUser == 'colegiado';">
             <ion-item routerDirection="root" routerLink="/cetificados-habilidad" lines="none" detail="false" routerLinkActive="selected">
-              <ion-icon slot="start" ios="shield-checkmark-outline" [md]="shield-checkmark"></ion-icon>
+              <ion-icon slot="start" ios="shield-checkmark-outline"></ion-icon>
               <ion-label>Certificados de Habilidad</ion-label>
             </ion-item>
           </ion-menu-toggle>

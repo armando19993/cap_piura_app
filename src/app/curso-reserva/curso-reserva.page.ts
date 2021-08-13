@@ -3,7 +3,6 @@ import { ServiciosService } from './../servicios.service';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 @Component({
   selector: 'app-curso-reserva',
@@ -17,7 +16,6 @@ export class CursoReservaPage implements OnInit {
 
   constructor(
     private activeroute: ActivatedRoute,
-    private photoViewer: PhotoViewer,
     private loading: LoadingController,
     private alertService: AlertService,
     private servicio: ServiciosService) {
@@ -63,7 +61,7 @@ export class CursoReservaPage implements OnInit {
   }
 
   onClickVerImagen() {
-    this.photoViewer.show(this.curso.foto);
+    //this.photoViewer.show(this.curso.foto);
   }
 
 }
