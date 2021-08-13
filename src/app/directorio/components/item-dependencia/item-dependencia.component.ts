@@ -9,9 +9,13 @@ export class ItemDependenciaComponent implements OnInit {
 
   @Input() itemDependencia: any;
 
+  dependencia: any;
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.itemDependencia.abierto = false;
+  }
 
   clickDependencia(event){
     this.itemDependencia.abierto = !event;

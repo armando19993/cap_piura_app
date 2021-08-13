@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
+import { AlertService } from 'src/app/alert.service';
+import { ServiciosService } from 'src/app/servicios.service';
 
 @Component({
   selector: 'app-tarjeta-dependencia',
@@ -7,27 +11,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TarjetaDependenciaComponent implements OnInit {
 
-  itemsDependencias: any = [
-    {nombre:'Colegiatura', codigo:'073 - 285030 - Anexo 1008',abierto: false,
-     usuarios:[
-      {nombre: 'Lic. GIULLIANA BELÉN CELI CARRASCO', photo:'' , cargo:'Auxiliar Administrativo', correo:'colegiatura@cippiura.org',
-       telefono:'954727530'}
-     ]},
-    {nombre:'Contabilidad', codigo:'073 - 285030 - Anexo 1002', abierto: false,
-     usuarios:[
-      {nombre: 'CPC. RUTH VIVIANA ALDANA HUAMÁN', photo:'' , cargo:'Contadora', correo:'contabilidad@cippiura.org', telefono:''},
-      {nombre: 'CPC. SARA BELÉN YOVERA RAMIREZ', photo:'' , cargo:'Asistente Contable', correo:'asistente-contable@cippiura.org',
-       telefono:''}
-     ]},
-    {nombre:'Centro de Arbitraje y Resolución de Disputa', codigo:'073 - 285030 - Anexo 1011', abierto:false,
-     usuarios:[
-      {nombre: 'Abog. ELIZABETH JULIANA ATOCHE CHIRA', photo:'' , cargo:'Administradora', correo:'card@cippiura.org', telefono:'954726622'},
-      {nombre: 'FAUSTINO PRIETO VILLEGAS', photo:'' , cargo:'Asistente Administrativo', correo:'asitente-card@cippiura.org', telefono:''}
-     ]}
-  ];
+  dependencias: any;
 
-  constructor() { }
+  constructor(private activeroute: ActivatedRoute,
+    private alertService: AlertService,
+    private loading: LoadingController,
+    private servicio: ServiciosService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.cargarDependencias();
+  }
+
+  async cargarDependencias(){
+    const loader = await this.loading.create({
+      cssClass: 'loader_cont',
+     }); loader.present();
+
+    return this.servicio.getDataAPI('dependencias')
+    .subscribe((data: any)=>{
+      this.dependencias = data.dependencias;
+      console.log(this.dependencias);
+
+      loader.dismiss();
+
+    });
+  }
 
 }
