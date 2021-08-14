@@ -1,9 +1,22 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Pagos</ion-title>
+<ion-header [translucent]="true">
+  <ion-toolbar style="margin: 0 auto;" color="primary">
+    <ion-buttons slot="start">
+    <ion-back-button defaultHref="curso" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title style="margin: 0 auto;">Pagos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-select  placeholder="Tipo de Pago">
+    <ion-select-option *ngFor="let item of tiposPago" [value]='item.id'>{{item.categoria}}</ion-select-option>
+  </ion-select>
 
+  <ion-select  placeholder="Forma de Pago">
+    <ion-select-option *ngFor="let item of formasPago" [value]='item.id'>{{item.pago}}</ion-select-option>
+  </ion-select>
+
+  <div style="text-align: center;">
+    <ion-button expand="block" (click)="pagar()">Pagar</ion-button>
+  </div>
 </ion-content>

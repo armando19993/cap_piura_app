@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
-import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +14,7 @@ export class AppComponent {
     { title: 'Directorio', url: '/directorio', icon: 'albums' },
     { title: 'Bolsa de Trabajo', url: '/bolsa-trabajo', icon: 'folder' },
     { title: 'Estado de Cuenta', url: '/estado-de-cuenta', icon: 'receipt'},
-    { title: 'Pagos', url: '/', icon: 'cash'},
+    { title: 'Pagos', url: '/pagos', icon: 'cash'},
     { title: 'Cursos / Capacitaciones', url: '/curso', icon: 'school'},
     { title: 'Soporte App', url: '/', icon: 'help'}
   ];
@@ -24,8 +23,8 @@ export class AppComponent {
   documento: any;
   estado: any;
   tipo: any;
-  etiqueta_estado: string;
-  tipo_user: any;
+  etiquetaEstado: string;
+  tipoUser: any;
 
   constructor(
     private loading: LoadingController,
@@ -48,20 +47,20 @@ export class AppComponent {
       this.estado = data.estado;
       this.tipo = window.localStorage.getItem('tipo_usuario');
       if(window.localStorage.getItem('tipo_usuario') === 'externo'){
-        this.tipo_user = 'externo';
+        this.tipoUser = 'externo';
         this.nombre = data.nombres + ' ' + data.apellido_parteno;
         this.documento = data.dni;
         this.estado = 1;
       }
       if(window.localStorage.getItem('tipo_usuario') === 'colegiado'){
-        this.tipo_user = "colegiado";
+        this.tipoUser = 'colegiado';
         this.nombre = data.nombres + ' ' + data.apellido_paterno;
         this.documento = data.reg_cap;
-        if(data.estado == 1){
-          this.tipo = window.localStorage.getItem('tipo_usuario')+"_activo";
+        if(data.estado === 1){
+          this.tipo = window.localStorage.getItem('tipo_usuario')+'_activo';
         }
         else{
-          this.tipo = window.localStorage.getItem('tipo_usuario')+"_inactivo";
+          this.tipo = window.localStorage.getItem('tipo_usuario')+'_inactivo';
         }
 
         console.log(this.tipo);
