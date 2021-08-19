@@ -13,37 +13,35 @@ export class CursoPagoPage implements OnInit {
 
   curso: any;
   cursos: any[];
+  id: any;
+  titulo: any;
+  imagenes: any;
+  contenido: any;
 
   constructor(
     private activeroute: ActivatedRoute,
     private alertService: AlertService,
     private loading: LoadingController,
     private servicio: ServiciosService) {
-      this. listarCursos();
     }
 
   ngOnInit() {
-  }
+    this.activeroute.params.subscribe((data: any)=>{
+      this.id = data.cursoId;
 
-  async listarCursos(){
-    const loader = await this.loading.create({
-      cssClass: 'loader_cont',
-     }); loader.present();
-
-    return this.servicio.getDataAPI('cursos')
-    .subscribe((data: any)=>{
-      this.cursos = data.cursos;
-
-      this.activeroute.params.subscribe((ruta: any) => {
-        this.curso = this.cursos.find(x => x.id === + ruta.cursoId);
-        this.curso.foto =  'https://retos-operaciones-logistica.eae.es/wp-content/uploads/2018/04/iStock-627490508.jpg';
-        console.log(this.curso);
+      return this.servicio.getDataParamsAPI('curso', this.id)
+      // eslint-disable-next-line @typescript-eslint/no-shadow
+      .subscribe((data: any)=>{
+        console.log(data);
+        this.titulo = data.noticia.titulo;
+        this.imagenes = data.noticia.imagenes;
+        this.contenido = data.noticia.contenido;
+        console.log(data);
       });
-
-      loader.dismiss();
-
     });
   }
+
+
 
 
   onClickVerImagen() {

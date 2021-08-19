@@ -120,13 +120,17 @@ const routes: Routes = [
     loadChildren: () => import('./curso-reserva/curso-reserva.module').then( m => m.CursoReservaPageModule)
   },
   {
-    path: 'curso-pago',
-    loadChildren: () => import('./curso-reserva/curso-reserva.module').then( m => m.CursoReservaPageModule)
-  },
-  {
     path: 'curso-pago/:cursoId',
     loadChildren: () => import('./curso-pago/curso-pago.module').then( m => m.CursoPagoPageModule)
+  },  {
+    path: 'cursos',
+    loadChildren: () => import('./cursos/cursos.module').then( m => m.CursosPageModule)
   },
+  {
+    path: 'cursos-by-category',
+    loadChildren: () => import('./cursos-by-category/cursos-by-category.module').then( m => m.CursosByCategoryPageModule)
+  },
+
 
 ];
 

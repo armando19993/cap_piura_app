@@ -20,7 +20,7 @@ export class QrCodePage implements OnInit {
 
   ngOnInit() {
     this.activeroute.params.subscribe((data: any)=>{
-      this.qr = "http://localhost:8000/img/"+data.id+".svg";
+      this.qr = "https://robertoprincipe.com/img/"+data.id+".svg";
     });
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { ServiciosService } from '../servicios.service';
 
 @Component({
@@ -15,12 +16,22 @@ export class BolsaDetallePage implements OnInit {
 
   constructor(
     private activeroute: ActivatedRoute,
-    private servicio: ServiciosService
+    private servicio: ServiciosService,
+    private loading: LoadingController,
   ) { }
 
 
   ngOnInit() {
-    this.activeroute.params.subscribe((data: any)=>{
+    this.getNoticia();
+  }
+
+
+  async getNoticia(){
+    const loader = await this.loading.create({
+      cssClass: 'loader_cont',
+     }); loader.present();
+
+     this.activeroute.params.subscribe((data: any)=>{
       this.id = data.id;
 
       return this.servicio.getDataParamsAPI('bolsas', this.id)
@@ -29,9 +40,10 @@ export class BolsaDetallePage implements OnInit {
         this.titulo = data.bolsa.titulo;
         this.descripcion = data.bolsa.descripcion;
         this.fecha = data.bolsa.fecha;
-
+        loader.dismiss();
         console.log(data.bolsa);
       });
     });
+
   }
 }

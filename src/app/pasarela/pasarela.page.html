@@ -11,14 +11,15 @@
  <form action="/process_payment" method="post" id="paymentForm">
       <img src="/assets/images/logo_.png" class="image-login"  alt=""> <br>
           <div>
-            <input type="text" id="cardNumber" class="input" (change)="guessPaymentMethod(); getCardToken()" placeholder="Numero de Tarjeta" data-checkout="cardNumber"
+            <input type="text" id="cardNumber" class="input_tarjeta" (change)="guessPaymentMethod(); getCardToken()" placeholder="Numero de Tarjeta" data-checkout="cardNumber"
               onselectstart="return false" onpaste="return false"
               oncopy="return false" oncut="return false"
               ondrag="return false" ondrop="return false" autocomplete=off>
+              <img src="{{tipo_tarjeta}}.png" alt="">
           </div>
 
           <div>
-           
+
             <div>
               <input type="text" placeholder="MM" class="input-fecha" id="cardExpirationMonth" data-checkout="cardExpirationMonth"
                 onselectstart="return false" onpaste="return false"
@@ -62,13 +63,13 @@
             <!-- Cuotas -->
             <select type="text" id="installments" name="installments" hidden="true"></select>
           </div>
-           
+
           <div>
             <input type="hidden" name="transactionAmount" id="transactionAmount" value="100" />
             <input type="text" name="paymentMethodId" id="paymentMethodId" (blur)="getCardToken()" hidden="true"/>
             <input type="hidden" name="description" id="description" />
             <br>
-            <button (click)="pagar()" class="boton" type="submit">Pagar S/ {{monto}}</button>
+            <button (click)="pagar(); getCardToken()" class="boton" type="submit">Pagar S/ {{monto}}</button>
             <br>
           </div>
       </div>

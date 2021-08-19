@@ -1,3 +1,4 @@
+import { ServiciosService } from 'src/app/servicios.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
@@ -19,11 +20,14 @@ export class PasarelaPage implements OnInit {
   serverMP: string = 'https://api.mercadopago.com/v1/payments';
   id: any;
   monto: any;
+  tipo_tarjeta: any;
+  tarjeta: any;
 
   constructor(
     private http: HttpClient,
     private activeroute: ActivatedRoute,
     private router: Router,
+    private servicio: ServiciosService
   ) {}
 
 
@@ -51,6 +55,9 @@ export class PasarelaPage implements OnInit {
         console.log(response.id);
     } else {
         console.log(response);
+        if(response.error == "bad_request"){
+          console.log(response.error.cause);
+        }
     }
   };
 
@@ -58,7 +65,10 @@ export class PasarelaPage implements OnInit {
     if (status == 200) {
         let paymentMethod = response[0];
         (<HTMLInputElement>document.getElementById("paymentMethodId")).value = paymentMethod.id;
-        console.log((<HTMLInputElement>document.getElementById("paymentMethodId")).value);    
+        //console.log((<HTMLInputElement>document.getElementById("paymentMethodId")).value);
+        //this.tipo_tarjeta = response[0].id;
+        this.tarjeta = response[0].id;
+        console.log(this.tipo_tarjeta);
     } else {
         alert(`payment method info error: ${response}+ ${status}`);
     }
@@ -73,7 +83,7 @@ export class PasarelaPage implements OnInit {
             opt.value = issuer.id;
             issuerSelect.appendChild(opt);
         });
-  
+
     } else {
         alert(`issuers method info error: ${response}`);
     }
@@ -115,20 +125,15 @@ export class PasarelaPage implements OnInit {
 
  }
    this.postDataAPI_MP(form).subscribe((val) =>{
-   
+
      var arr = JSON.stringify(val);
      var parsed = JSON.parse (arr);
      let arreglo = [];
      console.log(parsed);
-     this.sdkResponseHandler = parsed;
-
-     if(parsed.status == "approved"){
-       this.router.navigate(['/pago-exitoso/'+this.id+'/'+parsed.id]);
-     }
    });
  }
 
- postDataAPI_MP(bodys){     
+ postDataAPI_MP(bodys){
   let headers = new HttpHeaders({
     'Content-Type': 'application/json; charset=UTF-8',
    'Access-Control-Allow-Origin': '*',

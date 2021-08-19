@@ -23,6 +23,15 @@ export class NoticiaPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getNoticia();
+  }
+
+  async getNoticia(){
+    const loader = await this.loading.create({
+      cssClass: 'loader_cont',
+     }); loader.present();
+
+
     this.activeroute.params.subscribe((data: any)=>{
       this.id = data.id;
 
@@ -33,6 +42,7 @@ export class NoticiaPage implements OnInit {
         this.imagenes = data.noticia.imagenes;
         this.contenido = data.noticia.contenido;
         console.log(data);
+        loader.dismiss();
       });
     });
   }

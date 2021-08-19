@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">cap_piura</string>
+    <string name="title_activity_main">cap_piura</string>
+    <string name="package_name">com.cappiura.app</string>
+    <string name="custom_url_scheme">com.cappiura.app</string>
+</resources>

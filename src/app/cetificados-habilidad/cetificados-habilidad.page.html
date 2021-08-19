@@ -22,7 +22,7 @@
 
   <ion-list class="ion-text-center list_buttons_news" *ngIf="tipo == 'colegiado_inactivo'">
     <ion-button color="danger" style="width:90%">
-    Usted Se encuentra Inactivo, pague sus deudas para poder solicitar su certificado de habilidad
+    Usted Se encuentra Inactivo, pague sus <br>deudas para poder solicitar su <br> certificado de habilidad
     </ion-button>
   </ion-list>
 
@@ -36,7 +36,7 @@
             <ion-card-title>Vigente hasta: {{certificado.vigencia_fecha}}</ion-card-title>
       </ion-card-header>
      <ion-card-header class="boton-completo" routerLink="/qr-code/{{certificado.codigo_serie}}"> <ion-icon name="barcode" style="font-size: 1.3em"></ion-icon> QR</ion-card-header>
-     <ion-card-header color="success"> 
+     <ion-card-header color="success">
        <div (click)="descargar(certificado.pdf)"><ion-icon name="document" ></ion-icon> Descargar Certificado</div>
     </ion-card-header>
     </ion-card>

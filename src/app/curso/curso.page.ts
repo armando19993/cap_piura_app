@@ -33,7 +33,7 @@ export class CursoPage implements OnInit {
      }); loader.present();
 
 
-    return this.servicio.getDataAPI('cursos')
+    return this.servicio.getDataParamsAPI('curso', 0)
     .subscribe((data: any)=>{
       this.cursos = data.cursos;
       localStorage.setItem('cursos',this.cursos);

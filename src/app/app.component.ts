@@ -15,7 +15,7 @@ export class AppComponent {
     { title: 'Bolsa de Trabajo', url: '/bolsa-trabajo', icon: 'folder' },
     { title: 'Estado de Cuenta', url: '/estado-de-cuenta', icon: 'receipt'},
     { title: 'Pagos', url: '/pagos', icon: 'cash'},
-    { title: 'Cursos / Capacitaciones', url: '/curso', icon: 'school'},
+    { title: 'Cursos / Capacitaciones', url: '/cursos', icon: 'school'},
     { title: 'Soporte App', url: '/', icon: 'help'}
   ];
 
