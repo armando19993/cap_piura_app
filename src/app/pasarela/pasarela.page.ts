@@ -20,8 +20,7 @@ export class PasarelaPage implements OnInit {
   serverMP: string = 'https://api.mercadopago.com/v1/payments';
   id: any;
   monto: any;
-  tipo_tarjeta: any;
-  tarjeta: any;
+  creditCard: string;
 
   constructor(
     private http: HttpClient,
@@ -66,9 +65,8 @@ export class PasarelaPage implements OnInit {
         let paymentMethod = response[0];
         (<HTMLInputElement>document.getElementById("paymentMethodId")).value = paymentMethod.id;
         //console.log((<HTMLInputElement>document.getElementById("paymentMethodId")).value);
-        //this.tipo_tarjeta = response[0].id;
-        this.tarjeta = response[0].id;
-        console.log(this.tipo_tarjeta);
+        console.log(response[0].id);
+
     } else {
         alert(`payment method info error: ${response}+ ${status}`);
     }
@@ -97,12 +95,30 @@ export class PasarelaPage implements OnInit {
     );
   }
 
+  obtenerImagenTarjeta(){
+
+    const paymentMethod = (<HTMLInputElement>document.getElementById("paymentMethodId"))?.value;
+
+    if (paymentMethod !== '') {
+      return `../../assets/images/${paymentMethod}.png`;
+    }
+    else{
+      return '';
+    }
+
+
+
+  }
+
   async guessPaymentMethod(event) {
     let cardnumber = (<HTMLInputElement>document.getElementById("cardNumber")).value;
       console.log(cardnumber);
         Mercadopago.getPaymentMethod({
             "bin": cardnumber
         }, this.setPaymentMethod);
+
+
+
  };
 
  getCardToken(event){
@@ -115,10 +131,10 @@ export class PasarelaPage implements OnInit {
  async pagar(){
   let form = {
    "transaction_amount": Number(this.monto),
-   "token": (<HTMLInputElement>document.getElementById("token")).value,
+   "token": (<HTMLInputElement>document.getElementById("token"))?.value,
    "description": "Pago Servicio, CAP Piura, atraves de Aplicativo Movil",
    "installments": 1,
-   "payment_method_id": (<HTMLInputElement>document.getElementById("paymentMethodId")).value,
+   "payment_method_id": (<HTMLInputElement>document.getElementById("paymentMethodId"))?.value,
    "payer": {
      "email": "test@test.com"
    }
