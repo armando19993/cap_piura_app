@@ -11,12 +11,12 @@
  <form action="/process_payment" method="post" id="paymentForm">
       <img src="/assets/images/logo_.png" class="image-login"  alt=""> <br>
           <div>
-            <input type="text" id="cardNumber" class="input_tarjeta" (change)="guessPaymentMethod(); getCardToken()" placeholder="Numero de Tarjeta" data-checkout="cardNumber"
+            <input type="text" id="cardNumber" class="input_tarjeta {{cardNumber ? 'error' : 'error_x' }}" (change)="guessPaymentMethod(); getCardToken()" placeholder="Numero de Tarjeta" data-checkout="cardNumber"
               onselectstart="return false" onpaste="return false"
               oncopy="return false" oncut="return false"
               ondrag="return false" ondrop="return false" autocomplete=off>
 
-              <ion-img *ngIf="obtenerImagenTarjeta() !== ''" [src]="obtenerImagenTarjeta()"></ion-img>
+              <ion-img *ngIf="obtenerImagenTarjeta() !== ''" [src]="obtenerImagenTarjeta()" class="imagen_tarjeta"></ion-img>
           </div>
 
           <div>

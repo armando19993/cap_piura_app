@@ -21,6 +21,7 @@ export class PasarelaPage implements OnInit {
   id: any;
   monto: any;
   creditCard: string;
+  cardNumber: any;
 
   constructor(
     private http: HttpClient,
@@ -55,7 +56,7 @@ export class PasarelaPage implements OnInit {
     } else {
         console.log(response);
         if(response.error == "bad_request"){
-          console.log(response.error.cause);
+          this.obtenerCardNumber();
         }
     }
   };
@@ -97,9 +98,12 @@ export class PasarelaPage implements OnInit {
 
   obtenerImagenTarjeta(){
 
-    const paymentMethod = (<HTMLInputElement>document.getElementById("paymentMethodId"))?.value;
+    let paymentMethod = (<HTMLInputElement>document.getElementById("paymentMethodId"))?.value;
 
     if (paymentMethod !== '') {
+      if(paymentMethod == "master"){
+        paymentMethod = "mastercard";
+      }
       return `../../assets/images/${paymentMethod}.png`;
     }
     else{
@@ -127,6 +131,10 @@ export class PasarelaPage implements OnInit {
        Mercadopago.createToken($form, this.setCardTokenAndPay);
        return false;
  };
+
+ obtenerCardNumber(){
+   this.cardNumber = true;
+ }
 
  async pagar(){
   let form = {

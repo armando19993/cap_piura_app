@@ -28,6 +28,12 @@
   margin-bottom: 5px;
 }
 
+.imagen_tarjeta{
+  width: 10%;
+  float: right;
+  margin-right: 5%;
+}
+
 .input2{
     width: 40%;
     background-color: #cdcdcd;
@@ -100,3 +106,12 @@
     margin-bottom: 5px;
     color: white;
 }
+
+
+.error{
+  border: solid red 1px;
+}
+
+.error_x{}
+
+
