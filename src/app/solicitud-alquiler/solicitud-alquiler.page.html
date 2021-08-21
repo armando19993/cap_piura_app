@@ -1,0 +1,40 @@
+
+
+<ion-header [translucent]="true">
+  <ion-toolbar style="margin: 0 auto;" color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="margin: 0 auto;">Solicitar Alquiler</ion-title>
+    <!-- <ion-buttons slot="end" (click)="cerrarSesion()">
+      <ion-icon name="log-out-outline"  style="font-size: 2em;"></ion-icon>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <br>
+    <ion-select placeholder="Seleccione Local" [(ngModel)]="local" (ionChange)="listarTarifas()" interface="action-sheet">
+      <ion-select-option *ngFor="let item of lista_alquileres" [value]='item.id'>{{item.local}}</ion-select-option>
+    </ion-select> <br>
+
+    <ion-select placeholder="Seleccione Tarifa" [(ngModel)]="tarifa_date" (ionChange)="datearTarifa()" interface="action-sheet">
+      <ion-select-option *ngFor="let item of lista_tarifas" [value]='item.id'>{{item.tiempo}}</ion-select-option>
+    </ion-select> <br>
+
+    <ion-input placeholder="" disabled>Precio: S/ {{tarifa_monto}}</ion-input> <br>
+
+    <ion-datetime placeholder="Desde" displayFormat="DD-MM-YYYY" [(ngModel)]="desde"></ion-datetime> <br>
+
+    <ion-datetime placeholder="Hasta" displayFormat="DD-MM-YYYY" [(ngModel)]="hasta"></ion-datetime> <br>
+
+    <ion-textarea placeholder="Describa su solicitud para su aprobacion" [(ngModel)]="detalle_solicitud"></ion-textarea>
+
+    <ion-button color="primary" (click)="solicitarAlquiler()"> Solicitar Alquiler </ion-button> <br>
+
+
+  </div>
+
+
+</ion-content>

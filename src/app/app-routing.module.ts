@@ -116,14 +116,6 @@ const routes: Routes = [
     loadChildren: () => import('./pagos/pagos.module').then( m => m.PagosPageModule)
   },
   {
-    path: 'curso-reserva/:cursoId',
-    loadChildren: () => import('./curso-reserva/curso-reserva.module').then( m => m.CursoReservaPageModule)
-  },
-  {
-    path: 'curso-pago/:cursoId',
-    loadChildren: () => import('./curso-pago/curso-pago.module').then( m => m.CursoPagoPageModule)
-  },
-  {
     path: 'cursos',
     loadChildren: () => import('./cursos/cursos.module').then( m => m.CursosPageModule)
   },
@@ -131,6 +123,19 @@ const routes: Routes = [
     path: 'cursos-by-category',
     loadChildren: () => import('./cursos-by-category/cursos-by-category.module').then( m => m.CursosByCategoryPageModule)
   },
+  {
+    path: 'alquileres',
+    loadChildren: () => import('./alquileres/alquileres.module').then( m => m.AlquileresPageModule)
+  },  {
+    path: 'solicitud-alquiler',
+    loadChildren: () => import('./solicitud-alquiler/solicitud-alquiler.module').then( m => m.SolicitudAlquilerPageModule)
+  },
+  {
+    path: 'detalle-solicitud-alquiler',
+    loadChildren: () => import('./detalle-solicitud-alquiler/detalle-solicitud-alquiler.module').then( m => m.DetalleSolicitudAlquilerPageModule)
+  },
+
+
 
 
 ];

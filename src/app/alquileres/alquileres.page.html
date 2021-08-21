@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="margin: 0 auto;" color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="margin: 0 auto;">Alquileres</ion-title>
+    <!-- <ion-buttons slot="end" (click)="cerrarSesion()">
+      <ion-icon name="log-out-outline"  style="font-size: 2em;"></ion-icon>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+  <div id="container">
+    <br>
+    <ion-list class="ion-text-center list_buttons_news">
+      <ion-button color="success" routerLink="/solicitud-alquiler" style="width:90%">
+      <ion-icon name="add-circle"></ion-icon>  Solicitar Nuevo
+      </ion-button>
+    </ion-list>
+
+
+    <br><br>
+
+    <ion-list>
+      <div >
+      <ion-card  style="width: 90%; margin-left: 5%;" *ngFor="let certificado of certificados_data">
+        <ion-card-header>
+              <ion-card-subtitle>CERTIFICADO DE HABILIDAD PROFESIONAL</ion-card-subtitle>
+              <ion-card-title>Vigente hasta: {{certificado.vigencia_fecha}}</ion-card-title>
+        </ion-card-header>
+       <ion-card-header class="boton-completo" routerLink="/qr-code/{{certificado.codigo_serie}}"> <ion-icon name="barcode" style="font-size: 1.3em"></ion-icon> QR</ion-card-header>
+       <ion-card-header color="success">
+         <div (click)="descargar(certificado.pdf)"><ion-icon name="document" ></ion-icon> Descargar Certificado</div>
+      </ion-card-header>
+      </ion-card>
+    </div>
+  </ion-list>
+
+  </div>
+
+
+</ion-content>
