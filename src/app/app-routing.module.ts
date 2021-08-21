@@ -108,7 +108,7 @@ const routes: Routes = [
     loadChildren: () => import('./junta-by-category/junta-by-category.module').then( m => m.JuntaByCategoryPageModule)
   },
   {
-    path: 'curso',
+    path: 'curso/:id',
     loadChildren: () => import('./curso/curso.module').then( m => m.CursoPageModule)
   },
   {
@@ -122,7 +122,8 @@ const routes: Routes = [
   {
     path: 'curso-pago/:cursoId',
     loadChildren: () => import('./curso-pago/curso-pago.module').then( m => m.CursoPagoPageModule)
-  },  {
+  },
+  {
     path: 'cursos',
     loadChildren: () => import('./cursos/cursos.module').then( m => m.CursosPageModule)
   },
