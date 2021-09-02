@@ -35,7 +35,7 @@
             <ion-card-title>S/ {{recibo.monto}}</ion-card-title>
       </ion-card-header>
      <ion-card-header class="boton-completo" routerLink="/detalle-pago/{{recibo.id}}"> <ion-icon name="eye-outline"></ion-icon> Detalles</ion-card-header>
-     <ion-card-header class="boton-completo2" color="secondary" routerLink="/tipo-documento/{{recibo.id}}"> <ion-icon name="eye-outline"></ion-icon> Documento Sunat</ion-card-header>
+     <ion-card-header class="boton-completo2" color="secondary" (click)="descargar(recibo.pdf)"> <ion-icon name="eye-outline"></ion-icon> Documento Sunat</ion-card-header>
     </ion-card>
   </div>
 </ion-list>

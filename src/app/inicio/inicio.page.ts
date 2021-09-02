@@ -13,6 +13,7 @@ export class InicioPage implements OnInit {
   documento: any;
 
   public noticias: any[] = [];
+  tipoUser: string;
 
   constructor(
     private router: Router,
@@ -26,6 +27,7 @@ export class InicioPage implements OnInit {
     else{
       this.router.navigate(['/folder']);
     }
+
   }
 
   ionViewWillEnter(){

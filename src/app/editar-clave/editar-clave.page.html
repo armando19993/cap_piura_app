@@ -6,7 +6,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title style="margin: 0 auto;">Editar Clave</ion-title>
-    
+
     <!-- <ion-buttons slot="end" (click)="cerrarSesion()">
       <ion-icon name="log-out-outline"  style="font-size: 2em;"></ion-icon>
     </ion-buttons> -->
@@ -17,10 +17,12 @@
 
 
   <div id="container">
+    <br>
+    <br>
       <p style="text-align: center;" class="titulo-editar">DATOS DEL USUARIO</p>
       <p style="margin-left: 5%; margin-bottom: 0px;">Nombre: {{nombre}}</p>
       <p style="margin-left: 5%; margin-top: 0px;"> DNI o CAP: {{documento}}</p>
-      
+
       <ion-label position="stacked" style="margin-left: 5%;">Nueva Clave</ion-label>
       <ion-input placeholder="Clave" [(ngModel)]="clave1" ></ion-input> <br>
       <ion-label position="stacked" style="margin-left: 5%;">Repita su Clave</ion-label>

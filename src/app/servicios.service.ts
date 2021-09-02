@@ -6,9 +6,9 @@ import { ToastController } from '@ionic/angular';
   providedIn: 'root'
 })
 export class ServiciosService {
-  private URL_API: string = 'http://localhost:8000/api/';
+  //private URL_API: string = 'http://localhost:8000/api/';
   //private URL_API: string = 'https://cap.armandocampos.com/api/';
-  //private URL_API: string = 'https://robertoprincipe.com/api/';
+  private URL_API: string = 'https://robertoprincipe.com/api/';
 
 
   constructor(

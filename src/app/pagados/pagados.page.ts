@@ -13,7 +13,8 @@ export class PagadosPage implements OnInit {
   public recibos_data: any[] = [];
   public tipo_user:any;
   public documento: any;
-  
+  documento_sunar: any;
+
 
   constructor(
     private router: Router,
@@ -24,7 +25,7 @@ export class PagadosPage implements OnInit {
   ngOnInit() {
     const data = JSON.parse(window.localStorage.getItem('usuario'));
     this.tipo_user = window.localStorage.getItem('tipo_usuario');
-    
+
     if(window.localStorage.getItem('tipo_usuario') === 'externo'){
         this.documento = data.dni;
       }
@@ -41,6 +42,11 @@ export class PagadosPage implements OnInit {
 
     }
   }
+
+
+  descargar(url){
+    window.open(url, "__self");
+   }
 
   async recibos_colegiados(){
      const loader = await this.loading.create({

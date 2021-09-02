@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="margin: 0 auto;" color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="margin: 0 auto;"> ERROR EN PAGO </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+      <img src="/assets/images/error.png" class="image-login"  alt=""> <br>
+      <p class="text-exito"> ERROR EN PAGO </p>
+
+      <div class="div">
+       <b>Error: </b> {{estado_pago}} <br>
+      </div>
+
+    <button class="boton" routerLink="/pagados">Reintentar Pago</button>
+    <button class="boton" routerLink="/pagados">Historial de Pago</button>
+</ion-content>

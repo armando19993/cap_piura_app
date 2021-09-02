@@ -13,6 +13,18 @@
       <p class="text-exito"> PAGO EXITOSO </p>
 
       <ion-grid>
+        <ion-row>
+          <ion-col class="titulo" size="12">
+            Fecha - Hora
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col class="textos" size="12">
+            {{pago.updated_at}}
+          </ion-col>
+        </ion-row>
+
       <ion-row>
         <ion-col class="titulo" size="12">
           Codigo Mercado Pago
@@ -78,5 +90,5 @@
       <button class="boton" routerLink="/pagados">Regresar</button>
       </ion-grid>
 
-    
+
 </ion-content>

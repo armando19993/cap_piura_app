@@ -35,6 +35,16 @@
               <ion-label>Certificados de Habilidad</ion-label>
             </ion-item>
           </ion-menu-toggle>
+
+          <ion-menu-toggle style="border: 0x solid;" auto-hide="false" *ngIf="tipoUser == 'colegiado';">
+            <ion-item routerDirection="root" routerLink="/cerrar-sesion" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" ios="log-out-outline"></ion-icon>
+              <ion-label>Cerrar Sesion</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+
+
         </ion-list>
 
 

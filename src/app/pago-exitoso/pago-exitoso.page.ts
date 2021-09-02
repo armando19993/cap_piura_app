@@ -22,16 +22,30 @@ export class PagoExitosoPage implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.activeroute.params.subscribe((data: any)=>{
       this.id = data.id;
       this.id_mercado = data.pago;
     });
-
+   this.registrarTransaccion();
     return this.servicio.getDataParamsTwo('update-mercadopago-procesado', this.id, this.id_mercado)
       // eslint-disable-next-line @typescript-eslint/no-shadow
       .subscribe((data: any)=>{
         this.pago = data;
         console.log(this.pago);
+      });
+
+
+  }
+
+
+  registrarTransaccion(){
+    return this.servicio.getDataParamsTwo('addTransaccionStatus', this.id, "EXITO")
+      // eslint-disable-next-line @typescript-eslint/no-shadow
+      .subscribe((data: any)=>{
+        if(data == 1){
+          this.servicio.Mensaje('Error comunciado al CAP con exito');
+        }
       });
   }
 

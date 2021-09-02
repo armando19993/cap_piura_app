@@ -32,11 +32,25 @@ export class EditarClavePage implements OnInit {
       cssClass: 'loader_cont',
      }); loader.present();
      const data = JSON.parse(window.localStorage.getItem("usuario"));
+
      if(window.localStorage.getItem('tipo_usuario') === 'externo'){
       this.documento = data.dni;
     }
-    
-     this.nombre = data.nombres + " " + data.apellido_parteno + " " + data.apellido_materno;
+    else{
+      this.documento = data.reg_cap;
+    }
+
+    if(data.nombres == undefined){
+      data.nombres = "";
+    }
+    if(data.apellido_paterno == undefined){
+      data.apellido_paterno = "";
+    }
+    if(data.apellido_materno == undefined){
+      data.apellido_materno = "";
+    }
+
+     this.nombre = data.nombres + " " + data.apellido_paterno + " " + data.apellido_materno;
 
      console.log(data);
 
@@ -57,6 +71,7 @@ export class EditarClavePage implements OnInit {
       clave2 : this.clave2,
     };
 
+    if(window.localStorage.getItem('tipo_usuario') === 'externo'){
     return this.servicio.postDataAPI(dataForm, 'update-clave-externo-app/'+value)
     .subscribe((data:any) => {
       if(data > 0){
@@ -69,6 +84,21 @@ export class EditarClavePage implements OnInit {
         loader.dismiss();
       }
     })
+    }
+    else{
+      return this.servicio.postDataAPI(dataForm, 'update-clave-colegiado-app/'+value)
+    .subscribe((data:any) => {
+      if(data > 0){
+        this.servicio.Mensaje('Contraseña Creada con exito');
+        this.router.navigate(['/editar-perfil']);
+        loader.dismiss();
+      }
+      else{
+        this.servicio.Mensaje('Claves No Coinciden', 'danger');
+        loader.dismiss();
+      }
+    })
+    }
 
 
 

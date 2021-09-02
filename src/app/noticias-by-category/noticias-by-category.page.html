@@ -26,7 +26,7 @@
     <ion-list>
     <div *ngFor="let noticia of noticias">
     <ion-card routerLink="/noticia/{{noticia.id}}" style="width: 90%; margin-left: 5%;" >
-      <img src="http://localhost:8000/uploads/noticias/{{noticia.imagenes[0].imagen}}" />
+      <img src="https://robertoprincipe.com/uploads/noticias/{{noticia.imagenes[0].imagen}}" />
       <ion-card-header>
         <ion-card-subtitle>{{noticia.fecha}} - {{noticia.categoria.categoria}}</ion-card-subtitle>
         <ion-card-title>{{noticia.titulo}}</ion-card-title>

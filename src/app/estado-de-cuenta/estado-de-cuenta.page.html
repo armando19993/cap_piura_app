@@ -34,7 +34,7 @@
             <ion-card-subtitle>{{recibo.fecha}} - {{recibo.pago_concepto}}</ion-card-subtitle>
             <ion-card-title>S/ {{recibo.monto}}</ion-card-title>
       </ion-card-header>
-     <ion-card-header class="boton-completo" (click)="ejecutar()" routerLink="/tipo-documento/{{recibo.id}}">Ver</ion-card-header>
+     <ion-card-header class="boton-completo" routerLink="/tipo-documento/{{recibo.id}}">Ver</ion-card-header>
     </ion-card>
   </div>
 </ion-list>

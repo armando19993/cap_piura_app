@@ -61,7 +61,7 @@ export class SolicitudAlquilerPage implements OnInit {
     let formData = {
         tipo_solicitante: tipo_usuario,
         documento_solicitante: data.dni,
-        solicitante: data.nombres + ' ' + data.apellido_parteno + ' ' + data.apellido_materno,
+        solicitante: data.nombres + ' ' + data.apellido_paterno + ' ' + data.apellido_materno,
         detalle_solicitud: this.detalle_solicitud,
         desde: this.desde,
         hasta: this.hasta,

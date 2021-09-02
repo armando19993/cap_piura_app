@@ -57,14 +57,16 @@ export class AppComponent {
         this.tipoUser = 'colegiado';
         this.nombre = data.nombres + ' ' + data.apellido_paterno;
         this.documento = data.reg_cap;
-        if(data.estado === 1){
-          this.tipo = window.localStorage.getItem('tipo_usuario')+'_activo';
+        if(window.localStorage.getItem('estado') === "1"){
+          this.tipo = 'colegiado_activo';
+          console.log(this.tipo);
         }
         else{
-          this.tipo = window.localStorage.getItem('tipo_usuario')+'_inactivo';
+          this.tipo = 'colegiado_inactivo';
+          console.log(this.tipo);
         }
 
-        console.log(this.tipo);
+        console.log("estado_ "+ window.localStorage.getItem('estado'));
       }
 
   }

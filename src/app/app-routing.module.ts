@@ -126,7 +126,8 @@ const routes: Routes = [
   {
     path: 'alquileres',
     loadChildren: () => import('./alquileres/alquileres.module').then( m => m.AlquileresPageModule)
-  },  {
+  },
+  {
     path: 'solicitud-alquiler',
     loadChildren: () => import('./solicitud-alquiler/solicitud-alquiler.module').then( m => m.SolicitudAlquilerPageModule)
   },
@@ -134,6 +135,22 @@ const routes: Routes = [
     path: 'detalle-solicitud-alquiler',
     loadChildren: () => import('./detalle-solicitud-alquiler/detalle-solicitud-alquiler.module').then( m => m.DetalleSolicitudAlquilerPageModule)
   },
+  {
+    path: 'error-pago/:Estado/:Id',
+    loadChildren: () => import('./error-pago/error-pago.module').then( m => m.ErrorPagoPageModule)
+  },  {
+    path: 'cerrar-sesion',
+    loadChildren: () => import('./cerrar-sesion/cerrar-sesion.module').then( m => m.CerrarSesionPageModule)
+  },
+  {
+    path: 'credenciales-colegiado',
+    loadChildren: () => import('./credenciales-colegiado/credenciales-colegiado.module').then( m => m.CredencialesColegiadoPageModule)
+  },
+  {
+    path: 'detalle-alquiler',
+    loadChildren: () => import('./detalle-alquiler/detalle-alquiler.module').then( m => m.DetalleAlquilerPageModule)
+  },
+
 
 
 

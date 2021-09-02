@@ -15,6 +15,7 @@ export class NoticiasByCategoryPage implements OnInit {
   documento: any;
   categorias: any;
   id: any;
+  noticias: any;
 
   constructor(
     private router: Router,
@@ -47,10 +48,10 @@ export class NoticiasByCategoryPage implements OnInit {
     this.activeroute.params.subscribe((data: any)=>{
       this.id = data.id;
 
-      return this.servicio.getDataParamsAPI('juntaByCategory', this.id)
+      return this.servicio.getDataParamsAPI('noticiasByCategoria', this.id)
       // eslint-disable-next-line @typescript-eslint/no-shadow
       .subscribe((data: any)=>{
-        this.usuarios = data.junta;
+        this.noticias = data.noticias;
         console.log(data);
         loader.dismiss();
       });
@@ -61,7 +62,7 @@ export class NoticiasByCategoryPage implements OnInit {
 
 
  async listarcategorias(){
-  return this.servicio.getDataAPI('categoriasJuntas')
+  return this.servicio.getDataAPI('categoriasNoticias')
   .subscribe((data: any)=>{
     this.categorias = data.categorias;
     console.log(this.categorias);

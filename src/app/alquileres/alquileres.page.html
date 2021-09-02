@@ -26,14 +26,17 @@
 
     <ion-list>
       <div >
-      <ion-card  style="width: 90%; margin-left: 5%;" *ngFor="let certificado of certificados_data">
+      <ion-card  style="width: 90%; margin-left: 5%;" *ngFor="let alquiler of alquileres">
         <ion-card-header>
-              <ion-card-subtitle>CERTIFICADO DE HABILIDAD PROFESIONAL</ion-card-subtitle>
-              <ion-card-title>Vigente hasta: {{certificado.vigencia_fecha}}</ion-card-title>
+              <ion-card-subtitle>SOLICITUD ALQUILER: {{alquiler.alquiler_lista_data.local}} ({{alquiler.tiempo_data.tiempo}})</ion-card-subtitle>
+              <ion-card-title>Desde:  {{alquiler.desde}}</ion-card-title>
+              <ion-card-title>Hasta:  {{alquiler.hasta}}</ion-card-title>
         </ion-card-header>
-       <ion-card-header class="boton-completo" routerLink="/qr-code/{{certificado.codigo_serie}}"> <ion-icon name="barcode" style="font-size: 1.3em"></ion-icon> QR</ion-card-header>
-       <ion-card-header color="success">
-         <div (click)="descargar(certificado.pdf)"><ion-icon name="document" ></ion-icon> Descargar Certificado</div>
+       <ion-card-header class="boton-completo" routerLink="/tipo-documento/{{alquiler.data_deuda.id}}" *ngIf="alquiler.data_deuda != null && alquiler.status != 4"> <ion-icon name="barcode" style="font-size: 1.3em"></ion-icon> Pagar</ion-card-header>
+       <ion-card-header class="boton-completo2" *ngIf=" alquiler.status == 4"> Pagado</ion-card-header>
+       <ion-card-header color="success" (click)="descargar(alquiler.data_deuda.pdf)" *ngIf=" alquiler.status == 4"> Documento Electronico</ion-card-header>
+       <ion-card-header color="primary">
+         <div (click)="descargar(certificado.pdf)"><ion-icon name="document" ></ion-icon> Ver Detalles </div>
       </ion-card-header>
       </ion-card>
     </div>

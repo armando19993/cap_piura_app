@@ -15,7 +15,7 @@
   <ion-select  placeholder="Tipo de Pago" [(ngModel)]="tipo_pago" (ionChange)="listarPagos()">
     <ion-select-option *ngFor="let item of tiposPago" [value]='item.id'>{{item.categoria}}</ion-select-option>
   </ion-select>
-
+  <br>
   <ion-select  placeholder="Forma de Pago" [(ngModel)]="pago" (ionChange)="getPago()">
     <ion-select-option *ngFor="let item of formasPago" [value]='item.id'>{{item.pago}}</ion-select-option>
   </ion-select>
@@ -24,7 +24,7 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <div>
+        <div class="text-900">
           Pago
         </div>
       </ion-col>
@@ -37,7 +37,7 @@
 
     <ion-row>
       <ion-col>
-        <div>
+        <div class="text-900">
           Descripcion
         </div>
       </ion-col>
@@ -51,7 +51,7 @@
 
     <ion-row>
       <ion-col>
-        <div>
+        <div class="text-900">
           Monto
         </div>
       </ion-col>
@@ -62,8 +62,8 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-
-  <div style="text-align: center;">
+  <br>
+  <div style="text-align: center; width: 90%; margin-left: 5%;">
     <ion-button expand="block" (click)="pagar()"> S/ {{monto}} Pagar</ion-button>
   </div>
 </ion-content>

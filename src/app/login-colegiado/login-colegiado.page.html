@@ -11,12 +11,13 @@
 </div>
 <div class="form-login" style="margin-top: 30px; margin-bottom: 30px;">
 
-  <ion-input placeholder="CIP" [(ngModel)]="cip"></ion-input> <br>
-  <ion-input placeholder="Clave" [(ngModel)]="clave"></ion-input> <br>
+  <ion-input placeholder="CAP" [(ngModel)]="cip"></ion-input> <br>
+  <ion-input placeholder="CLAVE" [(ngModel)]="clave"></ion-input> <br>
 
-  
+
 
 </div>
 <ion-button color="primary" (click)="IniciarSesion()"> INICIAR SESION </ion-button>
+<ion-button color="primary" fill="outline" routerLink="/credenciales-colegiado"> Recuperar Credenciales </ion-button>
   <ion-button color="dark" routerLink="/folder">REGRESAR</ion-button>
 </ion-content>

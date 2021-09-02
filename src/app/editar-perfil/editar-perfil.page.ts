@@ -40,10 +40,24 @@ export class EditarPerfilPage implements OnInit {
      if(window.localStorage.getItem('tipo_usuario') === 'externo'){
       this.documento = data.dni;
     }
-    
+    else{
+      this.documento = data.reg_cap;
+    }
+
     this.id = data.id;
 
-     this.nombre = data.nombres + " " + data.apellido_parteno + " " + data.apellido_materno;
+    if(data.nombres == undefined){
+      data.nombres = "";
+    }
+    if(data.apellido_paterno == undefined){
+      data.apellido_paterno = "";
+    }
+    if(data.apellido_materno == undefined){
+      data.apellido_materno = "";
+    }
+
+
+     this.nombre = data.nombres + " " + data.apellido_paterno + " " + data.apellido_materno;
      this.correo = data.correo;
      this.celular = data.celular;
      this.ruc = data.ruc;
@@ -73,12 +87,24 @@ export class EditarPerfilPage implements OnInit {
       fecha_nacimiento : this.fecha_nacimiento,
     };
 
-    return this.servicio.postDataAPI(dataForm, 'update-usuario-externo-app/'+value)
-    .subscribe((data:any) => {
-      window.localStorage.setItem("usuario", JSON.stringify(data));
-        this.servicio.Mensaje('Informacion Actualizada con exito');
-        loader.dismiss();
-    })
+
+    if(window.localStorage.getItem('tipo_usuario') === 'externo'){
+      return this.servicio.postDataAPI(dataForm, 'update-usuario-externo-app/'+value)
+      .subscribe((data:any) => {
+        window.localStorage.setItem("usuario", JSON.stringify(data));
+          this.servicio.Mensaje('Informacion Actualizada con exito');
+          loader.dismiss();
+      })
+    }
+    else{
+      return this.servicio.postDataAPI(dataForm, 'update-usuario-colegiado-app/'+value)
+      .subscribe((data:any) => {
+        window.localStorage.setItem("usuario", JSON.stringify(data));
+          this.servicio.Mensaje('Informacion Actualizada con exito');
+          loader.dismiss();
+      })
+    }
+
   }
 
 }

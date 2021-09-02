@@ -11,7 +11,7 @@
  <form action="/process_payment" method="post" id="paymentForm">
       <img src="/assets/images/logo_.png" class="image-login"  alt=""> <br>
           <div>
-            <input type="text" id="cardNumber" class="input_tarjeta {{cardNumber ? 'error' : 'error_x' }}" (change)="guessPaymentMethod(); getCardToken()" placeholder="Numero de Tarjeta" data-checkout="cardNumber"
+            <input type="text" id="cardNumber" class="input_tarjeta {{tieneError('E301') ? 'error' : 'error_x' }}" (change)="veriFin(); guessPaymentMethod(); getCardToken()" placeholder="Numero de Tarjeta" data-checkout="cardNumber"
               onselectstart="return false" onpaste="return false"
               oncopy="return false" oncut="return false"
               ondrag="return false" ondrop="return false" autocomplete=off>
@@ -22,44 +22,36 @@
           <div>
 
             <div>
-              <div *ngIf="tieneError('208') === true" style="background-color: red;">
-                <input type="text" placeholder="MM" class="input-fecha" id="cardExpirationMonth" data-checkout="cardExpirationMonth"
-                onselectstart="return false" onpaste="return false"
-                oncopy="return false" oncut="return false"
-                ondrag="return false" ondrop="return false" autocomplete=off>
-              </div>
 
-              <div *ngIf="tieneError('208') === false" >
-                <input type="text" placeholder="MM" class="input-fecha" id="cardExpirationMonth" data-checkout="cardExpirationMonth"
-                onselectstart="return false" onpaste="return false"
-                oncopy="return false" oncut="return false"
-                ondrag="return false" ondrop="return false" autocomplete=off>
-              </div>
-
-
-              <input type="text" placeholder="YY" class="input-fecha2" id="cardExpirationYear" data-checkout="cardExpirationYear"
+                <input type="text" placeholder="MM" class="input-fecha {{tieneError('208') ? 'error' : 'error_x' }}" id="cardExpirationMonth" data-checkout="cardExpirationMonth"
                 onselectstart="return false" onpaste="return false"
                 oncopy="return false" oncut="return false"
                 ondrag="return false" ondrop="return false" autocomplete=off>
 
-                <input id="securityCode" data-checkout="securityCode" placeholder="CVV" class="input2" (blur)="getbancos(); getCardToken()" type="text"
+
+              <input type="text" placeholder="YY" class="input-fecha2 {{tieneError('208') ? 'error' : 'error_x' }}" id="cardExpirationYear" data-checkout="cardExpirationYear"
+                onselectstart="return false" onpaste="return false"
+                oncopy="return false" oncut="return false"
+                ondrag="return false" ondrop="return false" autocomplete=off>
+
+                <input id="securityCode" data-checkout="securityCode" placeholder="CVV" class="input2 {{tieneError('E302') ? 'error' : 'error_x' }}" (blur)="veriFin(); getbancos(); getCardToken()" type="text"
               onselectstart="return false" onpaste="return false"
               oncopy="return false" oncut="return false"
               ondrag="return false" ondrop="return false" autocomplete=off>
             </div>
 
             <div>
-            <input id="cardholderName" class="input" placeholder="Titular de la Tarjeta" (blur)="getCardToken()" data-checkout="cardholderName" type="text">
+            <input id="cardholderName" class="input" placeholder="Titular de la Tarjeta" (blur)="veriFin(); getCardToken()" data-checkout="cardholderName" type="text">
             </div>
 
             <div>
-            <select id="docType" name="docType" class="documento" data-checkout="docType" (onchange)="getCardToken()" type="text"></select>
-              <input id="docNumber" name="docNumber" class="numero_documento" (blur)="getCardToken()" placeholder="Numero de Documento" data-checkout="docNumber" type="text"/>
+            <select id="docType" name="docType" class="documento" data-checkout="docType" (onchange)="veriFin(); getCardToken()" type="text"></select>
+              <input id="docNumber" name="docNumber" class="numero_documento {{tieneError('324') ? 'error' : 'error_x' }}" (blur)="getCardToken()" placeholder="Numero de Documento" data-checkout="docNumber" type="text"/>
             </div>
 
 
           <div>
-            <input id="email" name="email" class="input" placeholder="Email" type="text" (blur)="getCardToken()" value=""/>
+            <input id="email" name="email" [ngModel]="email" class="input" placeholder="Email" type="text" (blur)="veriFin(); getCardToken()" value=""/>
           </div>
 
 
@@ -83,7 +75,8 @@
             <input type="text" name="paymentMethodId" id="paymentMethodId" (blur)="getCardToken()" hidden="true"/>
             <input type="hidden" name="description" id="description" />
             <br>
-            <button (click)="pagar(); getCardToken()" class="boton" type="submit">Pagar S/ {{monto}}</button>
+            <button (click)="global();" *ngIf="tarjeta_estado == false" fill="outline" disabled class="boton" color="success" type="submit">Pagar S/ {{monto}}</button>
+            <ion-button (click)="global();" *ngIf="tarjeta_estado == true" style="padding: 10px;" class="boton" color="primary" type="submit">Pagar S/ {{monto}}</ion-button>
             <br>
           </div>
       </div>

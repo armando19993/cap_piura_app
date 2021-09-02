@@ -22,6 +22,8 @@ export class PasarelaPage implements OnInit {
   creditCard: string;
   cardNumber: any;
   listaErrores: CausaError[] = [];
+  email: any;
+  tarjeta_estado: boolean = false;
 
   constructor(
     private http: HttpClient,
@@ -56,6 +58,7 @@ export class PasarelaPage implements OnInit {
 
         return response;
     } else {
+      console.log(response);
       localStorage.removeItem('errores');
 
       const listaErrores: CausaError[] = [];
@@ -70,6 +73,13 @@ export class PasarelaPage implements OnInit {
 
       localStorage.setItem('errores',JSON.stringify(listaErrores));
       return response;
+    }
+  }
+
+  veriFin(){
+    if(this.tieneError('E301') == false){
+      this.tarjeta_estado = true;
+      //console.log("se esta eejecutando");
     }
   }
 
@@ -143,6 +153,11 @@ export class PasarelaPage implements OnInit {
     return false;
   };
 
+  async global(){
+    this.getCardToken();
+    this.pagar();
+  }
+
   async pagar(){
     const form = {
       "transaction_amount": Number(this.monto),
@@ -151,13 +166,50 @@ export class PasarelaPage implements OnInit {
       "installments": 1,
       "payment_method_id": (<HTMLInputElement>document.getElementById("paymentMethodId"))?.value,
       "payer": { "email": "test@test.com" }
-
     };
 
-    this.postDataAPI_MP(form).subscribe((val) =>{
-      var arr = JSON.stringify(val);
-      var parsed = JSON.parse (arr);
-    });
+    if(this.tieneError('E301') == true){
+      this.servicio.Mensaje('Tarjeta erronea, intente con otro numero de tarjeta por favor', 'danger');
+      this.tarjeta_estado = false;
+    }
+    else if(this.tieneError('E302') == true){
+      this.servicio.Mensaje('Codigo de seguridad erroneo', 'danger');
+    }
+    else{
+      this.postDataAPI_MP(form).subscribe((val) =>{
+        var arr = JSON.stringify(val);
+        var parsed = JSON.parse (arr);
+
+        if(parsed.status == "approved"){
+          this.router.navigate(['/pago-exitoso/'+this.id+'/'+parsed.id]);
+         }
+
+         else if(parsed.status == "rejected" && parsed.status_detail == "cc_rejected_insufficient_amount"){
+           this.router.navigate(['/error-pago/FUND/'+this.id]);
+         }
+
+         else if(parsed.status == "rejected" && parsed.status_detail == "cc_rejected_bad_filled_security_code")
+         {
+           this.router.navigate(['/error-pago/SECU/'+this.id]);
+         }
+
+         else if(parsed.status == "rejected" && parsed.status_detail == "cc_rejected_other_reason")
+         {
+           this.router.navigate(['/error-pago/OTHE/'+this.id]);
+         }
+
+         else if(parsed.status == "rejected" && parsed.status_detail == "cc_rejected_bad_filled_other")
+         {
+           this.router.navigate(['/error-pago/FORM/'+this.id]);
+         }
+
+         else{
+          this.router.navigate(['/error-pago/FIN/'+this.id]);
+         }
+
+
+      });
+    }
   }
 
   postDataAPI_MP(bodys) {
